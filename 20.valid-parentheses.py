@@ -21,9 +21,7 @@ class Solution:
                 start = stack.pop()
                 if brackets.get(start) != x:
                     return False
-        if len(stack):
-            return False
-        return True
+        return not len(stack)
 
 
 # @lc code=end

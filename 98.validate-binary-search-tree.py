@@ -27,10 +27,10 @@ def verify(n: Optional[TreeNode], low: int = -inf, high: int = inf) -> bool:
     if not n:
         return True
 
-    if n.val < low or n.val > high:
+    if n.val <= low or n.val >= high:
         return False
 
-    return verify(n, n.val, high) and verify(n, low, n.val)
+    return verify(n.right, n.val, high) and verify(n.left, low, n.val)
 
 
 class Solution:

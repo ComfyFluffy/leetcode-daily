@@ -39,7 +39,27 @@ class Solution:
         return verify(root)
 
 
+class Solution2:
+
+    def isValidBST(self, root: TreeNode) -> bool:
+
+        prev = -inf
+
+        def inorder(root):
+            nonlocal prev
+            if not root:
+                return True
+            if not inorder(root.left):
+                return False
+            if root.val <= prev:
+                return False
+            prev = root.val
+            return inorder(root.right)
+
+        return inorder(root)
+
+
 # @lc code=end
 # print(Solution().isValidBST(TreeNode(2, TreeNode(1), TreeNode(3))))
-print(Solution().isValidBST(
+print(Solution2().isValidBST(
     TreeNode(5, TreeNode(4), TreeNode(6, TreeNode(3), TreeNode(7)))))

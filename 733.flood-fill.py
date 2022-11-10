@@ -14,7 +14,7 @@ class Solution:
         if start == color:
             return image
 
-        def fill(sr: int, sc: int, color: int) -> list[list[int]]:
+        def fill(sr: int, sc: int, color: int):
             image[sr][sc] = color
             for r, c in [[sr + 1, sc], [sr, sc + 1], [sr - 1, sc],
                          [sr, sc - 1]]:

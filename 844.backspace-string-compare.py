@@ -26,10 +26,9 @@ class Solution:
     def backspaceCompare(self, s: str, t: str) -> bool:
 
         def valid_str(s: str) -> Generator[str, None, None]:
-            rs = reversed(s)
             backspaces = 0
 
-            for x in rs:
+            for x in reversed(s):
                 if x == '#':
                     backspaces += 1
                 elif backspaces == 0:

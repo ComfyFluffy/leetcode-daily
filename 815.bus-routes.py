@@ -27,15 +27,13 @@ class Solution:
             return 0
 
         node_to_route: dict[int, set[Route]] = defaultdict(set)
-        node_to_route_crosses: dict[int, set[Route]] = {}
+        crosses: set[int] = set()
         for r in routes:
             cr = Route(r)
             for n in r:
                 node_to_route[n].add(cr)
                 if len(node_to_route[n]) > 1:
-                    node_to_route_crosses[n] = node_to_route[n]
-
-        node_to_route_crosses_set = set(node_to_route_crosses)
+                    crosses.add(n)
 
         visited: set[Route] = set()
         results: set[int] = set()
@@ -47,7 +45,7 @@ class Solution:
                 return True
             visited.add(route)
 
-            for cross in route.nodes & node_to_route_crosses_set:
+            for cross in route.nodes & crosses:
                 routes = node_to_route[cross]
                 for r in routes:
                     if r in visited:
